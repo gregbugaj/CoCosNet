@@ -24,7 +24,7 @@ print(' '.join(sys.argv))
 # load the dataset
 dataloader = data.create_dataloader(opt)
 len_dataloader = len(dataloader)
-dataloader.dataset[11]
+dataloader.dataset[4]
 
 # create tool for counting iterations
 iter_counter = IterationCounter(opt, len(dataloader))

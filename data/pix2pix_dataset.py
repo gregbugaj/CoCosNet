@@ -22,6 +22,10 @@ class Pix2pixDataset(BaseDataset):
         self.opt = opt
 
         label_paths, image_paths = self.get_paths(opt)
+        print('****************** DATASET INFO ****************')
+        print(label_paths)
+        print(image_paths)
+        print(len(label_paths))
 
         if opt.dataset_mode != 'celebahq' and opt.dataset_mode != 'deepfashion':
             util.natural_sort(label_paths)
@@ -40,6 +44,9 @@ class Pix2pixDataset(BaseDataset):
 
         size = len(self.label_paths)
         self.dataset_size = size
+
+        print('****************** DATASET AFTER ****************')
+        print(self.dataset_size )
 
         self.real_reference_probability = 1 if opt.phase == 'test' else opt.real_reference_probability
         self.hard_reference_probability = 0 if opt.phase == 'test' else opt.hard_reference_probability
@@ -65,6 +72,7 @@ class Pix2pixDataset(BaseDataset):
         return label_tensor, params1
 
     def __getitem__(self, index):
+        print(f'** GET ITEMS : {index}')
         # Label Image
         label_path = self.label_paths[index]
         label_tensor, params1 = self.get_label_tensor(label_path)
@@ -152,6 +160,8 @@ class Pix2pixDataset(BaseDataset):
         return input_dict
 
     def __len__(self):
+
+        print(f' LEN : {self.dataset_size}')
         return self.dataset_size
 
     def get_ref(self, opt):

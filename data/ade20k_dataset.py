@@ -5,7 +5,6 @@ import os
 from data.pix2pix_dataset import Pix2pixDataset
 from data.image_folder import make_dataset
 
-
 class ADE20KDataset(Pix2pixDataset):
 
     @staticmethod
